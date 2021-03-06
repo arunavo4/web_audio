@@ -110,7 +110,6 @@ function stopRecording() {
 
     //stop microphone access
     gumStream.getAudioTracks()[0].stop();
-
     //create the wav blob and pass it on to createDownloadLink
     rec.exportWAV(createDownloadLink);
 }
@@ -152,6 +151,7 @@ function createDownloadLink(blob) {
           xhr.onload=function(e) {
               if(this.readyState === 4) {
                   console.log("Server returned: ",e.target.responseText);
+                  document.getElementById("comment").innerHTML = e.target.responseText;
               }
           };
           var fd=new FormData();
